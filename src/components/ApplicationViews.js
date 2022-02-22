@@ -1,25 +1,30 @@
 import React from "react"
-import { Route } from "react-router-dom"
+import { Route, Routes, Navigate } from "react-router-dom"
+import { Login } from './auth/Login'
+import { Register } from './auth/Register'
 
-export const ApplicationViews = () => {
+export const ApplicationViews = ({ isAuthenticated, setIsAuthenticated }) => {
+  const PrivateRoute = ({ children }) => {
+    return isAuthenticated ? children : <Navigate to="/login" />;
+  }
+
+  const setAuthUser = (user) => {
+    sessionStorage.setItem("nutshell_user", JSON.stringify(user))
+    setIsAuthenticated(sessionStorage.getItem("nutshell_user") !== null)
+  }
+
   return (
     <>
+      <Routes>
+        <Route exact path="/login" element={<Login setAuthUser={setAuthUser} />} />
+        <Route exact path="/register" element={<Register />} />
+        <Route  path="/" element={
+            <PrivateRoute>
+              Add component here
+            </PrivateRoute>
+        } />
+      </Routes>
 
-      <Route exact path="/">
-        {/* Render the component for news articles */}
-      </Route>
-      <Route path="/friends">
-        {/* Render the component for list of friends */}
-      </Route>
-      <Route path="/messages">
-        {/* Render the component for the messages */}
-      </Route>
-      <Route path="/tasks">
-        {/* Render the component for the user's tasks */}
-      </Route>
-      <Route path="/events">
-        {/* Render the component for the user's events */}
-      </Route>
     </>
   )
 }

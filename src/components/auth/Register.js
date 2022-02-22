@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import "./Login.css"
 
@@ -8,7 +8,7 @@ export const Register = () => {
     const [registerUser, setRegisterUser] = useState({ firstName: "", lastName: "", email: "" })
     const [conflictDialog, setConflictDialog] = useState(false)
 
-    const history = useHistory()
+    const navigate = useNavigate()
 
     const handleInputChange = (event) => {
         const newUser = { ...registerUser }
@@ -45,7 +45,7 @@ export const Register = () => {
                             if (createdUser.hasOwnProperty("id")) {
                                 // The user id is saved under the key nutshell_user in session Storage. Change below if needed!
                                 sessionStorage.setItem("nutshell_user", createdUser.id)
-                                history.push("/")
+                                navigate("/")
                             }
                         })
                 }
