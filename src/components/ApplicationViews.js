@@ -2,6 +2,7 @@ import React from "react"
 import { Route, Routes, Navigate } from "react-router-dom"
 import { Login } from './auth/Login'
 import { Register } from './auth/Register'
+import { EventEditForm } from './Events/EventEditForm'
 import { EventList } from "./Events/EventList.js"
 
 export const ApplicationViews = ({ isAuthenticated, setIsAuthenticated }) => {
@@ -27,7 +28,8 @@ export const ApplicationViews = ({ isAuthenticated, setIsAuthenticated }) => {
         } />
 
         {/* This will render the Events page when localhost displays http://localhost:3000/events */}
-        <Route path="/events" element={<EventList />} />
+        <Route path="/events/:eventId/edit" element={<EventEditForm />} />
+        <Route exact path="/events" element={<EventList />} />
       </Routes>
 
     </>

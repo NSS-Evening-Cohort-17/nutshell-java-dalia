@@ -5,7 +5,7 @@ import "./EventCard.css"
 export const EventCard = ({ eventObject, handleDeleteEvent }) => {
    return (
        <div className="card">
-           <h1>Posted by: {eventObject.user} </h1>
+           <h1>Posted by: {eventObject.userId} </h1>
            <div className="card-content">
             <h1>Title: <span className="card-EventTitle">
                 {eventObject.title}
