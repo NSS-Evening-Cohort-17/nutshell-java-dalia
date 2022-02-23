@@ -3,7 +3,8 @@ import { Route, Routes, Navigate } from "react-router-dom"
 import { Login } from './auth/Login'
 import { Register } from './auth/Register'
 import { EventEditForm } from './Events/EventEditForm'
-import { EventList } from "./Events/EventList.js"
+import { EventForm } from './Events/EventForm.js'
+import { EventList } from "./Events/EventList"
 
 export const ApplicationViews = ({ isAuthenticated, setIsAuthenticated }) => {
   const PrivateRoute = ({ children }) => {
@@ -28,8 +29,9 @@ export const ApplicationViews = ({ isAuthenticated, setIsAuthenticated }) => {
         } />
 
         {/* This will render the Events page when localhost displays http://localhost:3000/events */}
-        <Route path="/events/:eventId/edit" element={<EventEditForm />} />
-        <Route exact path="/events" element={<EventList />} />
+        <Route path="/events/:eventId/edit" element={<EventEditForm />} /> {/*Renders an edit form for event cards. */}
+        <Route exact path="/events" element={<EventList />} /> {/*Renders a list of event cards. */}
+        <Route path="/events/create" element={<EventForm />} /> {/*Renders a form for events. */}
       </Routes>
 
     </>
