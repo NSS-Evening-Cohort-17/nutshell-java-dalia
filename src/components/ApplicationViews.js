@@ -5,6 +5,7 @@ import { Route, Routes, Navigate } from "react-router-dom"
 import { ArticleList } from "./article/ArticleList"
 import { Login } from './auth/Login'
 import { Register } from './auth/Register'
+import { FriendList } from "./Friend/FriendList"
 
 export const ApplicationViews = ({ isAuthenticated, setIsAuthenticated }) => {
   const PrivateRoute = ({ children }) => {
@@ -25,9 +26,21 @@ export const ApplicationViews = ({ isAuthenticated, setIsAuthenticated }) => {
         <Route exact path="/articles" 
         element={
             <PrivateRoute>
+
+              Add component here
+            </PrivateRoute>} />
+
+        <Route exact path="/friends" element={
+    
+            <PrivateRoute>
+              <FriendList />
+            </PrivateRoute>} />
+              
+
                 <ArticleList />
             </PrivateRoute>
         } />
+
       </Routes>
     </>
   )
