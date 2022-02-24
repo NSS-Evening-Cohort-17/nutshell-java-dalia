@@ -44,14 +44,11 @@ export const EventForm = () => {
     const handleClickSaveEvent = (event) => {
 		event.preventDefault() //Prevents the browser from submitting the form
 
-		if (title == null || title == "", subject == null || subject == "", locations == null || locations == "", date == null || date == "", time == null || time == "",  description == null || description == "") {
-			window.alert("Please Fill All Required Field")
-		} else {
-			//invoke addEvent passing event as an argument.
-			//once complete, change the url and display the event list
-			addEvent(event)
-				.then(() => navigate("/events"))
-		}
+		//invoke addEvent passing event as an argument.
+		//once complete, change the url and display the event list
+		addEvent(event)
+			.then(() => navigate("/events"))
+		
 	}
 
     return (
