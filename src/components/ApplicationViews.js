@@ -2,6 +2,10 @@ import React from "react"
 import { Route, Routes, Navigate } from "react-router-dom"
 import { Login } from './auth/Login'
 import { Register } from './auth/Register'
+import { Home } from "./Home.js"
+import { TaskList } from "./Tasks/TaskList"
+import { TaskDetail } from "./Tasks/TaskDetail"
+import { TaskForm } from "./Tasks/TaskForm"
 
 export const ApplicationViews = ({ isAuthenticated, setIsAuthenticated }) => {
   const PrivateRoute = ({ children }) => {
@@ -20,9 +24,23 @@ export const ApplicationViews = ({ isAuthenticated, setIsAuthenticated }) => {
         <Route exact path="/register" element={<Register />} />
         <Route  path="/" element={
             <PrivateRoute>
-              Add component here
+                    <Home />
             </PrivateRoute>
         } />
+        <Route excat path="/tasks" element={
+                <PrivateRoute>
+                 <TaskList />
+                </PrivateRoute>} />
+                <Route path="/tasks/:taskId" element={
+                <PrivateRoute>
+                <TaskDetail />
+                </PrivateRoute>
+                } />
+                <Route path="/tasks/create" element={
+                <PrivateRoute>
+                <TaskForm />
+                </PrivateRoute>
+                } /> 
       </Routes>
 
     </>
