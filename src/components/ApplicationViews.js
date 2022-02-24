@@ -1,5 +1,8 @@
+// this is the article controller component 
+
 import React from "react"
 import { Route, Routes, Navigate } from "react-router-dom"
+import { ArticleList } from "./article/ArticleList"
 import { Login } from './auth/Login'
 import { Register } from './auth/Register'
 import { FriendList } from "./Friend/FriendList"
@@ -19,8 +22,11 @@ export const ApplicationViews = ({ isAuthenticated, setIsAuthenticated }) => {
       <Routes>
         <Route exact path="/login" element={<Login setAuthUser={setAuthUser} />} />
         <Route exact path="/register" element={<Register />} />
-        <Route  path="/" element={
+
+        <Route exact path="/articles" 
+        element={
             <PrivateRoute>
+
               Add component here
             </PrivateRoute>} />
 
@@ -30,8 +36,12 @@ export const ApplicationViews = ({ isAuthenticated, setIsAuthenticated }) => {
               <FriendList />
             </PrivateRoute>} />
               
-      </Routes>
 
+                <ArticleList />
+            </PrivateRoute>
+        } />
+
+      </Routes>
     </>
   )
 }
