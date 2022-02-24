@@ -19,9 +19,11 @@ export const ArticleList = () => {
   }, []);
 
   // Finally we use .map() to "loop over" the articles array to show a list of article cards
-  return (
+  return(
     <div className="container-cards">
-      {articles.map(article => <ArticleCard key={article.id} />)}
+      {articles.map(article =>
+        <ArticleCard key={article.id} article={article} />
+      )}
     </div>
   );
 };
