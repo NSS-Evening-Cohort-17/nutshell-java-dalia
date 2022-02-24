@@ -1,9 +1,9 @@
 import React,  {useState} from "react"
-import { Route, Link } from "react-router-dom"
+// import { Route, Link } from "react-router-dom"
 import { ApplicationViews } from "./ApplicationViews"
 import { NavBar } from "./nav/NavBar"
-import { Login } from "./auth/Login"
-import { Register } from "./auth/Register"
+// import { Login } from "./auth/Login"
+// import { Register } from "./auth/Register"
 import "./Nutshell.css"
 
 export const Nutshell = () => {
