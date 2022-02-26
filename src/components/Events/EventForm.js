@@ -3,12 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import { addEvent } from '../../modules/EventManager';
 import "./EventForm.css"
 
+//uses sessionstorage on Nutshell.js
+
 export const EventForm = () => {
 	// State will contain both Event data as well as an isLoading flag.
 	// Define the initial state of the form inputs with useState()
 	const navigate = useNavigate()
 
-	const [event, setEvent] = useState({
+	const [appEvent, setEvent] = useState({
         userId: 0,
 		title: "",
         subject: "",
@@ -28,7 +30,7 @@ export const EventForm = () => {
     const handleControlledInputChange = (event) => {
 		/* When changing a state object or array,
 		always create a copy, make changes, and then set state.*/
-		const newEvent = { ...event }
+		const newEvent = { ...appEvent }
 		let selectedVal = event.target.value
 		// forms always provide values as strings. But we want to save the ids as numbers.
 		if (event.target.id.includes("Id")) {
@@ -45,9 +47,14 @@ export const EventForm = () => {
     const handleClickSaveEvent = (event) => {
 		event.preventDefault() //Prevents the browser from submitting the form
 
+		const user = JSON.parse(sessionStorage.getItem("nutshell_user"))
+
+		const newEvent = { ...appEvent }
+		newEvent.userId = user.id
+		// setEvent(newEvent)
 		//invoke addEvent passing event as an argument.
 		//once complete, change the url and display the event list
-		addEvent(event)
+		addEvent(newEvent)
 			.then(() => navigate("/events"))
 		
 	}
@@ -55,45 +62,46 @@ export const EventForm = () => {
     return (
         <form className="eventForm">
             <h2 className="eventForm_header">New Event</h2>
+			<h2></h2>
             <fieldset>
 				<div className="form-group">
 					<label htmlFor="title">Title:</label>
-					<input type="text" id="title" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="New Year's Party" value={event.title} />
+					<input type="text" id="title" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="New Year's Party" value={appEvent.title} />
 				    </div>
 			        </fieldset>
             <fieldset>
 				<div className="form-group">
 					<label htmlFor="subject">Subject</label>
-					<input type="text" id="subject" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Hoilday" value={event.subject} />
+					<input type="text" id="subject" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Hoilday" value={appEvent.subject} />
 				    </div>
 			        </fieldset>
             <fieldset>
 				<div className="form-group">
 					<label htmlFor="locations">location</label>
-					<input type="text" id="locations" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="123 NSS st" value={event.locations} />
+					<input type="text" id="locations" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="123 NSS st" value={appEvent.locations} />
 				    </div>
 			        </fieldset>
             <fieldset>
 				<div className="form-group">
 					<label htmlFor="date">Date</label>
-					<input type="text" id="date" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="2/2/22" value={event.date} />
+					<input type="text" id="date" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="2/2/22" value={appEvent.date} />
 				    </div>
 			        </fieldset>
 					<fieldset>
 				<div className="form-group">
 					<label htmlFor="time">Time</label>
-					<input type="text" id="time" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="2:22 pm" value={event.time} />
+					<input type="text" id="time" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="2:22 pm" value={appEvent.time} />
 				    </div>
 			        </fieldset>
 			<fieldset>
 				<div className="form-group">
 					<label htmlFor="text">Decription</label>
-					<input type="text" id="description" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Come have fun!" value={event.description} />
+					<input type="text" id="description" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Come have fun!" value={appEvent.description} />
 				    </div>
 			        </fieldset>
 			<button className="btn btn-primary"
 				onClick={handleClickSaveEvent}>
-				Save Animal
+				Save Event
           		</button>
         </form>
     )
