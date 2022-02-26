@@ -6,6 +6,7 @@ import "./EventForm.css"
 export const EventForm = () => {
 	// State will contain both Event data as well as an isLoading flag.
 	// Define the initial state of the form inputs with useState()
+	const navigate = useNavigate()
 
 	const [event, setEvent] = useState({
         userId: 0,
@@ -57,27 +58,43 @@ export const EventForm = () => {
             <fieldset>
 				<div className="form-group">
 					<label htmlFor="title">Title:</label>
-					<input type="text" id="title" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Jo Wilson" value={event.title} />
+					<input type="text" id="title" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="New Year's Party" value={event.title} />
 				    </div>
 			        </fieldset>
             <fieldset>
 				<div className="form-group">
 					<label htmlFor="subject">Subject</label>
-					<input type="text" id="subject" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Jo Wilson" value={event.subject} />
+					<input type="text" id="subject" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Hoilday" value={event.subject} />
 				    </div>
 			        </fieldset>
             <fieldset>
 				<div className="form-group">
 					<label htmlFor="locations">location</label>
-					<input type="text" id="locations" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Jo Wilson" value={event.locations} />
+					<input type="text" id="locations" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="123 NSS st" value={event.locations} />
 				    </div>
 			        </fieldset>
             <fieldset>
 				<div className="form-group">
 					<label htmlFor="date">Date</label>
-					<input type="text" id="date" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Jo Wilson" value={event.date} />
+					<input type="text" id="date" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="2/2/22" value={event.date} />
 				    </div>
 			        </fieldset>
+					<fieldset>
+				<div className="form-group">
+					<label htmlFor="time">Time</label>
+					<input type="text" id="time" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="2:22 pm" value={event.time} />
+				    </div>
+			        </fieldset>
+			<fieldset>
+				<div className="form-group">
+					<label htmlFor="text">Decription</label>
+					<input type="text" id="description" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Come have fun!" value={event.description} />
+				    </div>
+			        </fieldset>
+			<button className="btn btn-primary"
+				onClick={handleClickSaveEvent}>
+				Save Animal
+          		</button>
         </form>
     )
 
