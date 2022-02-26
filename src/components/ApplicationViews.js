@@ -38,8 +38,9 @@ export const ApplicationViews = ({ isAuthenticated, setIsAuthenticated }) => {
                     <Home />
             </PrivateRoute>
         } />
-        <Route exact path="/articles" element={
-        <PrivateRoute>
+        <Route exact path="/articles" 
+        element={
+            <PrivateRoute>
                 <ArticleList />
             </PrivateRoute>} />
 
@@ -60,9 +61,9 @@ export const ApplicationViews = ({ isAuthenticated, setIsAuthenticated }) => {
 
         <Route exact path="/friends" element={
     
-            // <PrivateRoute>
-            //   <FriendList />
-            // </PrivateRoute>} />
+            <PrivateRoute>
+              <FriendList />
+            </PrivateRoute>} />
 
 
         {/* This will render the Events page when localhost displays http://localhost:3000/events */}
