@@ -38,8 +38,9 @@ export const ApplicationViews = ({ isAuthenticated, setIsAuthenticated }) => {
                     <Home />
             </PrivateRoute>
         } />
-        <Route exact path="/articles" element={
-        <PrivateRoute>
+        <Route exact path="/articles" 
+        element={
+            <PrivateRoute>
                 <ArticleList />
             </PrivateRoute>} />
 
