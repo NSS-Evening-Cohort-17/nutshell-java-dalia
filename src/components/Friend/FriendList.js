@@ -3,6 +3,8 @@ import { getAllFriends } from '../../modules/FriendManager';
 import { deleteFriend } from '../../modules/FriendManager';
 import { useNavigate } from 'react-router-dom';
 import { FriendCard } from './FriendCard';
+import { FriendForm } from './FriendForm';
+import { addFriend } from '../../modules/FriendManager';
 
 export const FriendList = () => {
 
@@ -24,19 +26,30 @@ export const FriendList = () => {
         deleteFriend(id)
         .then(() => getAllFriends().then(setFriends));
     };
+
+    const handleClickSaveFriend = id => {
+      addFriend(id)
+      .then(() => getAllFriends().then(setFriends));
+    };
     
       return (
     
 
-        <div className="container-cards">
+        <><div className="container-cards">
+          <section className="section-content">
+          </section>
+          {friends.map(friend => <FriendCard
+            key={friend.id}
+            friend={friend}
+            handleDeleteFriend={handleDeleteFriend} />)}
+        </div><div className="container-cards">
             <section className="section-content">
             </section>
-          {friends.map(friend => 
-          <FriendCard 
-          key={friend.id} 
-          friend={friend} 
-          handleDeleteFriend={handleDeleteFriend} />)}
-        </div>
+            {friends.map(friend => <FriendForm
+              key={friend.id}
+              friend={friend}
+              handleClickSaveFriend={handleClickSaveFriend} />)}
+          </div></>
       );
           };
 
