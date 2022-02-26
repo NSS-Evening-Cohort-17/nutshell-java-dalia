@@ -3,13 +3,13 @@
 import React from "react"
 import { Route, Routes, Navigate } from "react-router-dom"
 import { ArticleList } from "./article/ArticleList"
+import { ArticleForm } from "./article/ArticleForm"
 import { Login } from './auth/Login'
 import { Register } from './auth/Register'
 import { Home } from "./Home.js"
 import { TaskList } from "./Tasks/TaskList"
 import { TaskDetail } from "./Tasks/TaskDetail"
 import { TaskForm } from "./Tasks/TaskForm"
-
 import { EventEditForm } from './Events/EventEditForm'
 import { EventForm } from './Events/EventForm.js'
 import { EventList } from "./Events/EventList"
@@ -38,10 +38,16 @@ export const ApplicationViews = ({ isAuthenticated, setIsAuthenticated }) => {
                     <Home />
             </PrivateRoute>
         } />
+
         <Route exact path="/articles" 
         element={
             <PrivateRoute>
                 <ArticleList />
+            </PrivateRoute>} />
+        <Route path="/articles/create" 
+        element={
+            <PrivateRoute>
+                <ArticleForm />
             </PrivateRoute>} />
 
         <Route exact path="/tasks" element={
