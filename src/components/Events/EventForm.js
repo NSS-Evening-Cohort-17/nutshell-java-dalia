@@ -8,7 +8,7 @@ import "./EventForm.css"
 export const EventForm = () => {
 	// State will contain both Event data as well as an isLoading flag.
 	// Define the initial state of the form inputs with useState()
-	const navigate = useNavigate()
+	const navigate = useNavigate();
 
 	const [appEvent, setEvent] = useState({
 
@@ -64,50 +64,53 @@ export const EventForm = () => {
 
 
     return (
+		<>
         <form className="eventForm">
-            <h2 className="eventForm_header">New Event</h2>
-			<h2></h2>
-            <fieldset>
+    
+			<h2 className="eventForm_header">New Event</h2>
+			<fieldset>
 				<div className="form-group">
 					<label htmlFor="title">Title:</label>
 					<input type="text" id="title" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="New Year's Party" value={appEvent.title} />
-				    </div>
-			        </fieldset>
-            <fieldset>
-				<div className="form-group">
-					<label htmlFor="subject">Subject</label>
-					<input type="text" id="subject" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Hoilday" value={appEvent.subject} />
-				    </div>
-			        </fieldset>
-            <fieldset>
-				<div className="form-group">
-					<label htmlFor="locations">location</label>
-					<input type="text" id="locations" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="123 NSS st" value={appEvent.locations} />
-				    </div>
-			        </fieldset>
-            <fieldset>
-				<div className="form-group">
-					<label htmlFor="date">Date</label>
-					<input type="text" id="date" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="2/2/22" value={appEvent.date} />
-				    </div>
-			        </fieldset>
-					<fieldset>
-				<div className="form-group">
-					<label htmlFor="time">Time</label>
-					<input type="text" id="time" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="2:22 pm" value={appEvent.time} />
-				    </div>
-			        </fieldset>
+					</div>
+					</fieldset>
 			<fieldset>
-				<div className="form-group">
-					<label htmlFor="text">Decription</label>
-					<input type="text" id="description" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Come have fun!" value={appEvent.description} />
-				    </div>
-			        </fieldset>
+					<div className="form-group">
+						<label htmlFor="subject">Subject</label>
+						<input type="text" id="subject" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Hoilday" value={appEvent.subject} />
+						</div>
+						</fieldset>
+			<fieldset>
+					<div className="form-group">
+						<label htmlFor="locations">location</label>
+						<input type="text" id="locations" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="123 NSS st" value={appEvent.locations} />
+						</div>
+						</fieldset>
+			<fieldset>
+					<div className="form-group">
+						<label htmlFor="date">Date</label>
+						<input type="text" id="date" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="2/2/22" value={appEvent.date} />
+						</div>
+						</fieldset>
+			<fieldset>
+					<div className="form-group">
+						<label htmlFor="time">Time</label>
+						<input type="text" id="time" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="2:22 pm" value={appEvent.time} />
+						</div>
+						</fieldset>
+			<fieldset>
+					<div className="form-group">
+						<label htmlFor="text">Decription</label>
+						<input type="text" id="description" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Come have fun!" value={appEvent.description} />
+						</div>
+						</fieldset>
 			<button className="btn btn-primary"
 				onClick={handleClickSaveEvent}>
 				Save Event
-          		</button>
+			</button>
+		
         </form>
+		</>
     )
 
 
