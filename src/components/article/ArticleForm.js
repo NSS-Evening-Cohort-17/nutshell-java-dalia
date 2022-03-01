@@ -7,13 +7,12 @@ export const ArticleForm = () => {
 	// State will contain both article data as well as an isLoading flag.
 	// Define the initial state of the form inputs with useState()
 
-	const [article, setArticles] = useState({
+	const [article, setArticle] = useState({
 		userId: 0,
     title: "",
 		synopsis: "",
 		url: "",
-    date: "",
-		time: ""
+    dateTime: ""
 	});
 
 	const [isLoading, setIsLoading] = useState(false);
@@ -41,14 +40,8 @@ export const ArticleForm = () => {
 		using object bracket notation. */
 		newArticle[event.target.id] = selectedVal
 		// update state
-		setArticles(newArticle)
+		setArticle(newArticle)
 	};
-
-    useEffect(() => {
-		//load location data and setState
-    getAllArticles().then(setArticles)
-	  }, []);
-
 
 	const handleClickSaveArticle = (event) => {
     event.preventDefault() //Prevents the browser from submitting the form
@@ -58,9 +51,9 @@ export const ArticleForm = () => {
     const newArticle = { ...article }
     newArticle.userId = user.id
 		newArticle.dateTime = new Date().toLocaleString();
-			addArticle(newArticle)
-				.then(() => navigate("/articles"))
-		}
+		addArticle(newArticle)
+		.then(() => navigate("/articles"))
+	}
 
 	return (
 		<form className="articleForm">
