@@ -57,6 +57,7 @@ export const ArticleForm = () => {
 
     const newArticle = { ...article }
     newArticle.userId = user.id
+		newArticle.dateTime = new Date().toLocaleString();
 			addArticle(newArticle)
 				.then(() => navigate("/articles"))
 		}
@@ -82,7 +83,7 @@ export const ArticleForm = () => {
 					<input type="text" id="url" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Enter url here" value={article.url} />
 				</div>
 			</fieldset>
-      <fieldset>
+      {/* <fieldset>
 				<div className="form-group">
 					<label htmlFor="date">Date:</label>
 					<input type="text" id="date" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Enter date here" value={article.date} />
@@ -93,7 +94,7 @@ export const ArticleForm = () => {
 					<label htmlFor="time">Time:</label>
 					<input type="text" id="time" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Enter time here" value={article.time} />
 				</div>
-			</fieldset>
+			</fieldset> */}
 			<button className="btn btn-primary"
 				onClick={handleClickSaveArticle}>
 				Save Article
