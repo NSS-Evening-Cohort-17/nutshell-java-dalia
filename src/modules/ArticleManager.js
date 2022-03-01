@@ -7,7 +7,7 @@ export const getArticleById = (articleId) => {
 }
 
 export const getAllArticles = () => {
-  return fetch(`${remoteURL}/articles`)
+  return fetch(`${remoteURL}/articles?_expand=user`)
   .then(res => res.json())
 }
 
