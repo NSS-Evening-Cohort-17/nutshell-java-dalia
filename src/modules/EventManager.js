@@ -9,7 +9,7 @@ export const getEventById = (eventId) => {
 
 
 export const getAllEvents = () => {
-    return fetch(`${remoteURL}/events`)
+    return fetch(`${remoteURL}/events?_expand=user`)
     .then(res => res.json())
 }
 
