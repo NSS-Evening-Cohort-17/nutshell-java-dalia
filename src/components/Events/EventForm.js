@@ -21,7 +21,8 @@ export const EventForm = () => {
 		locations: "",
 		date: "",
 		time: "",
-		description: ""
+		description: "",
+		dateTime: ""
 	});
 
     const [isLoading, setIsLoading] = useState(false);
@@ -55,6 +56,7 @@ export const EventForm = () => {
 
 		const newEvent = { ...appEvent }
 		newEvent.userId = user.id
+		newEvent.dateTime = new Date().toLocaleString();
 		// setEvent(newEvent)
 		//invoke addEvent passing event as an argument.
 		//once complete, change the url and display the event list
@@ -62,6 +64,7 @@ export const EventForm = () => {
 			.then(() => navigate("/events"))
 		
 	}
+
 
     return (
         <form className="eventForm">
