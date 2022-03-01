@@ -10,11 +10,10 @@ export const ArticleCard = ({ article, handleDeleteArticle }) => {
         <h1>Title: <span className="card-articletitle">
           {article.title}
         </span></h1>
-        <h2>Posted by: {article.userId}</h2>
+        <h2>Posted by: {article.user.name}</h2>
         <p>Synopsis: {article.synopsis}</p>
         <p>URL: {article.url}</p>
-        <p>Date: {article.date}</p>
-        <p>Time: {article.time}</p>
+        <p>Timestamp: {article.dateTime}</p>
         <button type="button" onClick={() => handleDeleteArticle(article.id)}>Delete Article</button>
       </div>
     </div>
