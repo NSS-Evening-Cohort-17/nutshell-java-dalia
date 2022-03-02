@@ -57,7 +57,7 @@ export const MessageForm = () => {
 		const user = JSON.parse(sessionStorage.getItem("nutshell_user"))
 
 		const recipientId = message.recipientId
-
+    
 		if (recipientId === 0) {
 				window.alert("Please select a recipient")
 			} else {
