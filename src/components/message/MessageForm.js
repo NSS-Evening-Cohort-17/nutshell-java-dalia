@@ -10,10 +10,10 @@ export const MessageForm = () => {
 
 	const [message, setMessage] = useState({
 		userId: 0,
-    recipientId: 0,
-    subject: "",
+		recipientId: 0,
+		subject: "",
 		description: "",
-    dateTime: ""
+    	dateTime: ""
 	});
 
 	const [isLoading, setIsLoading] = useState(false);
@@ -45,62 +45,63 @@ export const MessageForm = () => {
 	}
 
 
-  useEffect(() => {
-		//load friend data and setState
-      getAllFriends().then(setFriends)
-	}, []);
+//   useEffect(() => {
+// 		//load friend data and setState
+//       getAllFriends().then(setFriends)
+// 	}, []);
 
 
 	const handleClickSaveMessage = (event) => {
-    event.preventDefault() //Prevents the browser from submitting the form
+		event.preventDefault() //Prevents the browser from submitting the form
 
-    const user = JSON.parse(sessionStorage.getItem("nutshell_user"))
+		const user = JSON.parse(sessionStorage.getItem("nutshell_user"))
 
-    const recipientId = message.recipientId
+		const recipientId = message.recipientId
+		
+		if (recipientId === 0) {
+				window.alert("Please select a recipient")
+			} else {
 
-    if (recipientId === 0) {
-			window.alert("Please select a recipient")
-		} else {
+			const newMessage = { ...message }
+			newMessage.userId = user.id
+				newMessage.dateTime = new Date().toLocaleString();
+				addMessage(newMessage)
+				.then(() => navigate("/messages"))
+		}}
 
-    const newMessage = { ...message }
-    newMessage.userId = user.id
-		newMessage.dateTime = new Date().toLocaleString();
-		addMessage(newMessage)
-		.then(() => navigate("/messages"))
-	}
-
-	return (
-		<form className="messageForm">
-			<h2 className="messageForm__title">New Message</h2>
-      <fieldset>
-				<div className="form-group">
-					<label htmlFor="recipientId">Recipient: </label>
-					<select value={message.recipientId} name="recipient" id="recipientId" onChange={handleControlledInputChange} className="form-control" >
-						<option value="0">Select a recipient</option>
-						{friends.map(r => (
-							<option key={r.id} value={r.id}>
-								{r.name}
-							</option>
-						))}
-					</select>
-				</div>
-			</fieldset>
-			<fieldset>
-				<div className="form-group">
-					<label htmlFor="subject">Message Subject:</label>
-					<input type="text" id="subject" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Enter subject here" value={message.subject} />
-				</div>
-			</fieldset>
-      <fieldset>
-				<div className="form-group">
-					<label htmlFor="body">Body:</label>
-					<input type="text" id="body" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Enter message here" value={message.body} />
-				</div>
-			</fieldset>
-			<button className="btn btn-primary"
-				onClick={handleClickSaveMessage}>
-				Save Message
-          </button>
-		</form>
-	)}
+		return (
+			<form className="messageForm">
+				<h2 className="messageForm__title">New Message</h2>
+		<fieldset>
+					<div className="form-group">
+						<label htmlFor="recipientId">Recipient: </label>
+						<select value={message.recipientId} name="recipient" id="recipientId" onChange={handleControlledInputChange} className="form-control" >
+							<option value="0">Select a recipient</option>
+							{friends.map(r => (
+								<option key={r.id} value={r.id}>
+									{r.name}
+								</option>
+							))}
+						</select>
+					</div>
+				</fieldset>
+				<fieldset>
+					<div className="form-group">
+						<label htmlFor="subject">Message Subject:</label>
+						<input type="text" id="subject" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Enter subject here" value={message.subject} />
+					</div>
+				</fieldset>
+		<fieldset>
+					<div className="form-group">
+						<label htmlFor="body">Body:</label>
+						<input type="text" id="body" onChange={handleControlledInputChange} required autoFocus className="form-control" placeholder="Enter message here" value={message.body} />
+					</div>
+				</fieldset>
+				<button className="btn btn-primary"
+					onClick={handleClickSaveMessage}>
+					Save Message
+			</button>
+			</form>
+		)
+	
 };

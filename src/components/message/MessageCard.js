@@ -6,8 +6,7 @@ export const MessageCard = ({ message, handleDeleteMessage }) => {
 
     return (
         <div className="card">
-           <h1>Posted by: {message.userId} </h1>
-           <h1>Posted by: {message.recipientId} </h1>
+           <h1>Sent to: {message.recipientId} </h1>
            <div className="card-content">
             <h2>Subject: {message.subject} </h2>
             <p> Message: {message.body} </p>

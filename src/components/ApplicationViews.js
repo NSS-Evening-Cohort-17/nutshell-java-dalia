@@ -14,7 +14,7 @@ import { EventEditForm } from './Events/EventEditForm'
 import { EventForm } from './Events/EventForm.js'
 import { EventList } from "./Events/EventList"
 import { FriendList } from "./Friend/FriendList"
-import { MessageCard } from "./message/MessageCard"
+import { MessageList } from "./message/MessageList"
 import { MessageForm } from "./message/MessageForm"
 
 export const ApplicationViews = ({ isAuthenticated, setIsAuthenticated }) => {
@@ -80,7 +80,7 @@ export const ApplicationViews = ({ isAuthenticated, setIsAuthenticated }) => {
         <Route path="/events/create" element={<EventForm />} /> {/*Renders a form for events. */}
 
         
-        <Route exact path="/messages" element={<MessageCard />} /> 
+        <Route exact path="/messages" element={<MessageList />} /> 
         <Route path="/messages/create" element={<MessageForm />} /> 
 
       </Routes>
