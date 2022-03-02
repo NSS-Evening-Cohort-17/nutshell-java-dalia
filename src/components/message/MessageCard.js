@@ -22,4 +22,3 @@ export const MessageCard = ({ message, handleDeleteMessage }) => {
 
 
 }
-
