@@ -15,6 +15,7 @@ import { EventForm } from './Events/EventForm.js'
 import { EventList } from "./Events/EventList"
 import { FriendList } from "./Friend/FriendList"
 import { MessageCard } from "./message/MessageCard"
+import { MessageForm } from "./message/MessageForm"
 
 export const ApplicationViews = ({ isAuthenticated, setIsAuthenticated }) => {
   const PrivateRoute = ({ children }) => {
@@ -78,9 +79,9 @@ export const ApplicationViews = ({ isAuthenticated, setIsAuthenticated }) => {
         <Route exact path="/events" element={<EventList />} /> {/*Renders a list of event cards. */}
         <Route path="/events/create" element={<EventForm />} /> {/*Renders a form for events. */}
 
-        {/* This will render the Messages page when localhost displays http://localhost:3000/messages */}
-        <Route exact path="/messages" element={<MessageCard />} /> {/*Renders a list of message cards. */}
-        {/* <Route path="/messages/create" element={<MessageForm />} /> Renders a form for messages. */}
+        
+        <Route exact path="/messages" element={<MessageCard />} /> 
+        <Route path="/messages/create" element={<MessageForm />} /> 
 
       </Routes>
     </>
