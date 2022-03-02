@@ -6,18 +6,19 @@ export const MessageCard = ({ message, handleDeleteMessage }) => {
 
     return (
         <div className="card">
-            <h1>Posted by:</h1>
-            <h1>Posted by:  </h1>
-            <div className="card-content">
-                <h2>Subject:  </h2>
-                <p> Description:  </p>
-                <p>Post Time: </p>
-            {/* <Link to={`/messages/${message.id}/edit`}>
-                <button>Edit</button>
-                </Link> */}
-            {/* <button type="button" onClick={() => handleDeleteMessage(message.id)}>Delete Event      <button> */}
-                </div>
-        </div>
+           <h1>Posted by: {message.userId} </h1>
+           <h1>Posted by: {message.recipientId} </h1>
+           <div className="card-content">
+            <h2>Subject: {message.subject} </h2>
+            <p> Message: {message.body} </p>
+            <p>Post Time: {message.dateTime}</p>
+            <Link to={`/messages/${message.id}/edit`}>
+              <button>Edit</button>
+              </Link>
+              <button type="button" onClick={() => handleDeleteMessage(message.id)}>Delete Message</button>
+           </div>
+       </div>
     )
+
 
 }
