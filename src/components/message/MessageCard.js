@@ -11,10 +11,7 @@ export const MessageCard = ({ message, handleDeleteMessage }) => {
             <h2>Subject: {message.subject} </h2>
             <p> Message: {message.body} </p>
             <p>Post Time: {message.dateTime}</p>
-            <Link to={`/messages/${message.id}/edit`}>
-              <button>Edit</button>
-              </Link>
-              <button type="button" onClick={() => handleDeleteMessage(message.id)}>Delete Message</button>
+              <button type="button" onClick={() => handleDeleteMessage(message?.id)}>Delete Message</button>
            </div>
        </div>
     )
