@@ -6,7 +6,7 @@ export const FriendCard = ({ friend, handleDeleteFriend}) => {
    
       <div className="card">
         <div className="card-content">
-          <h3>Name: <span className="card-locationname">
+          <h3>Name: <span className="card-friendname">
             {friend.name}
           </span></h3>
           <button type="button" onClick={() => handleDeleteFriend(friend.id)}>Delete Friend</button>

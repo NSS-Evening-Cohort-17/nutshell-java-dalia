@@ -14,8 +14,10 @@ import { EventEditForm } from './Events/EventEditForm'
 import { EventForm } from './Events/EventForm.js'
 import { EventList } from "./Events/EventList"
 import { FriendList } from "./Friend/FriendList"
+import { FriendForm } from "./Friend/FriendForm"
 import { MessageList } from "./message/MessageList"
 import { MessageForm } from "./message/MessageForm"
+
 
 export const ApplicationViews = ({ isAuthenticated, setIsAuthenticated }) => {
   const PrivateRoute = ({ children }) => {
@@ -72,6 +74,14 @@ export const ApplicationViews = ({ isAuthenticated, setIsAuthenticated }) => {
             <PrivateRoute>
               <FriendList />
             </PrivateRoute>} />
+
+            <Route path="/addFriend" element={
+              
+            <PrivateRoute>
+              <FriendForm /> 
+            
+            </PrivateRoute> } />
+                
 
 
         {/* This will render the Events page when localhost displays http://localhost:3000/events */}

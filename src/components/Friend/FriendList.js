@@ -35,22 +35,22 @@ export const FriendList = () => {
       return (
     
 
-        <><div className="container-cards">
+        <div className="container-cards">
           <section className="section-content">
+                <button type="button"
+                  className="btn"
+                  onClick={() => {navigate("/addFriend")}}>
+                  Add Friend
+                </button>
           </section>
-          {friends.map(friend => <FriendCard
-            key={friend.id}
-            friend={friend}
-            handleDeleteFriend={handleDeleteFriend} />)}
-        </div><div className="container-cards">
-            <section className="section-content">
-            </section>
-            {friends.map(friend => <FriendForm
-              key={friend.id}
-              friend={friend}
-              handleClickSaveFriend={handleClickSaveFriend} />)}
-          </div></>
+          {friends.map(friend => 
+            <FriendCard 
+              key={friend.id} 
+              friend={friend} 
+              handleDeleteFriend={handleDeleteFriend} />)}
+
+        </div>
       );
-          };
+    };
 
 
