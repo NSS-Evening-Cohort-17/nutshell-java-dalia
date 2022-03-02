@@ -9,11 +9,6 @@ export const EventForm = () => {
 	// State will contain both Event data as well as an isLoading flag.
 	// Define the initial state of the form inputs with useState()
 
-	const navigate = useNavigate()
-
-	
-
-
 	const navigate = useNavigate();
 
 
