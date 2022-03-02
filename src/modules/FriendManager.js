@@ -26,3 +26,8 @@ export const addFriend = (newFriend) => {
       body: JSON.stringify(newFriend)
   }).then(response => response.json())
 }
+
+export const getAllUsers = () => {
+  return fetch(`${remoteURL}/users`)
+  .then(res => res.json())
+}

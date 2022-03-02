@@ -10,7 +10,7 @@ export const EventForm = () => {
 	// Define the initial state of the form inputs with useState()
 	const navigate = useNavigate()
 
-	const [event, setEvent] = useState({
+	
 
 
 	const [appEvent, setEvent] = useState({
