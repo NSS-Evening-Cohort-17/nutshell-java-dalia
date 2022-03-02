@@ -10,20 +10,25 @@ export const NavBar = (props) => {
       <ul className="nav nav-pills nav-fill">
         
         <li className="nav-item">
-        <li className="navbar__item active">
           <Link className="nav-link" to="/"><img src={'/images/image2vector.svg'} alt="Employees" /></Link>
             </li>
+            
+        <li className="nav-item">
           <Link className="nav-link" to="/articles">Articles</Link>
         </li>
+
         <li className="nav-item">
           <Link className="nav-link" to="/friends">Friends</Link>
         </li>
+
         <li className="nav-item">
           <Link className="nav-link" to="/messages">Messages</Link>
         </li>
+
         <li className="nav-item">
           <Link className="nav-link" to="/tasks">Tasks</Link>
         </li>
+
         <li className="nav-item">
           <Link className="nav-link" to="/events">Events</Link>
         </li>

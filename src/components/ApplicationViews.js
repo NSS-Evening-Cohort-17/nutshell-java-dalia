@@ -3,18 +3,21 @@
 import React from "react"
 import { Route, Routes, Navigate } from "react-router-dom"
 import { ArticleList } from "./article/ArticleList"
+import { ArticleForm } from "./article/ArticleForm"
 import { Login } from './auth/Login'
 import { Register } from './auth/Register'
 import { Home } from "./Home.js"
 import { TaskList } from "./Tasks/TaskList"
 import { TaskDetail } from "./Tasks/TaskDetail"
 import { TaskForm } from "./Tasks/TaskForm"
-
 import { EventEditForm } from './Events/EventEditForm'
 import { EventForm } from './Events/EventForm.js'
 import { EventList } from "./Events/EventList"
 import { FriendList } from "./Friend/FriendList"
 import { FriendForm } from "./Friend/FriendForm"
+import { MessageList } from "./message/MessageList"
+import { MessageForm } from "./message/MessageForm"
+
 
 export const ApplicationViews = ({ isAuthenticated, setIsAuthenticated }) => {
   const PrivateRoute = ({ children }) => {
@@ -39,10 +42,16 @@ export const ApplicationViews = ({ isAuthenticated, setIsAuthenticated }) => {
                     <Home />
             </PrivateRoute>
         } />
+
         <Route exact path="/articles" 
         element={
             <PrivateRoute>
                 <ArticleList />
+            </PrivateRoute>} />
+        <Route path="/articles/create" 
+        element={
+            <PrivateRoute>
+                <ArticleForm />
             </PrivateRoute>} />
 
         <Route exact path="/tasks" element={
@@ -79,6 +88,11 @@ export const ApplicationViews = ({ isAuthenticated, setIsAuthenticated }) => {
         <Route path="/events/:eventId/edit" element={<EventEditForm />} /> {/*Renders an edit form for event cards. */}
         <Route exact path="/events" element={<EventList />} /> {/*Renders a list of event cards. */}
         <Route path="/events/create" element={<EventForm />} /> {/*Renders a form for events. */}
+
+        
+        <Route exact path="/messages" element={<MessageList />} /> 
+        <Route path="/messages/create" element={<MessageForm />} /> 
+
       </Routes>
     </>
   )
