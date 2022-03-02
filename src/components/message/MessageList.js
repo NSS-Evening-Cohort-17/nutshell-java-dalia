@@ -9,7 +9,7 @@ export const MessageList = () => {
 
   const navigate = useNavigate();
 
-  const getMessages = () => {
+  const getMessage = () => {
     // After the data comes back from the API, we use the setMessages function to update state
     return getAllMessages().then(messagesFromAPI => {
       setMessages(messagesFromAPI)
@@ -18,7 +18,7 @@ export const MessageList = () => {
 
   // Got the messages from the API on the component's first render
   useEffect(() => {
-    getMessages();
+    getMessage();
   }, []);
 
   const handleDeleteMessage = id => {
